@@ -17,5 +17,7 @@ public partial class GivenDetail
 
     public int CategoryId { get; set; }
 
+    public virtual Category Category { get; set; } = null!;
+
     public virtual GiverModel Given { get; set; } = null!;
 }

@@ -2,9 +2,9 @@
 {
     public class CurrencyDTO
     {
-     
 
-        public string CurrencyCode { get; set; }
+
+        public string CurrencyCode { get; set; } = null!;
 
         public string CurrencyName { get; set; } = null!;
 

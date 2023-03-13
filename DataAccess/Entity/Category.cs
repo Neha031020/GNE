@@ -14,4 +14,6 @@ public partial class Category
     public string CreatedBy { get; set; } = null!;
 
     public DateTime CreatedOn { get; set; }
+
+    public virtual ICollection<GivenDetail> GivenDetails { get; } = new List<GivenDetail>();
 }

@@ -11,6 +11,7 @@ namespace Services.Mapper
             CreateMap<Currency, CurrencyDTO>().ReverseMap();
             CreateMap<Category, CategoryTypeDTO>().ReverseMap();
             CreateMap<CounterParty, CounterPartyDTO>().ReverseMap();
+            CreateMap<User,UserDTO>().ReverseMap();
         }
     }
 }

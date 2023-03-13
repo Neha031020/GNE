@@ -34,6 +34,8 @@ builder.Services.AddScoped<ICategoryTypeServices, CategoryTypeServices>();
 builder.Services.AddScoped<ICategory, CategoryRepo>();
 builder.Services.AddScoped<ICounterPartyServices, CounterPartyServices>();
 builder.Services.AddScoped<ICounterParty, CounterPartyRepo>();
+builder.Services.AddScoped<IUserServices, UserServices>();
+builder.Services.AddScoped<IUser, UserRepo>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

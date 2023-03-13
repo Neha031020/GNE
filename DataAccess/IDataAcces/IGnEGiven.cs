@@ -8,5 +8,6 @@ namespace DataAccess.IDataAcces
 {
     public interface IGnEGiven
     {
+        public Task<string> GetFormCode();
     }
 }

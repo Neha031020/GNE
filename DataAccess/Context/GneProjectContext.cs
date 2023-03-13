@@ -193,6 +193,11 @@ public partial class GneProjectContext : DbContext
                 .IsUnicode(false);
             entity.Property(e => e.CreatedOn).HasColumnType("date");
 
+            entity.HasOne(d => d.Category).WithMany(p => p.GivenDetails)
+                .HasForeignKey(d => d.CategoryId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_GivenDetails_Category");
+
             entity.HasOne(d => d.Given).WithMany(p => p.GivenDetails)
                 .HasForeignKey(d => d.GivenId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -226,7 +231,6 @@ public partial class GneProjectContext : DbContext
             entity.Property(e => e.Comments)
                 .HasMaxLength(50)
                 .IsUnicode(false);
-            entity.Property(e => e.CostLocal).HasColumnName("Cost (Local)");
             entity.Property(e => e.CreatedBy)
                 .HasMaxLength(10)
                 .IsUnicode(false);
@@ -248,7 +252,6 @@ public partial class GneProjectContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false);
             entity.Property(e => e.IsSupplyChainVpapproved).HasColumnName("IsSupplyChainVPApproved");
-            entity.Property(e => e.MarketLocal).HasColumnName("Market (Local)");
 
             entity.HasOne(d => d.Currency).WithMany(p => p.GiverModels)
                 .HasForeignKey(d => d.CurrencyId)
@@ -339,6 +342,8 @@ public partial class GneProjectContext : DbContext
 
             entity.ToTable("ReceiverModel");
 
+            entity.HasIndex(e => e.FormCode, "UQ__Receiver__F69A6BF739D585C9").IsUnique();
+
             entity.Property(e => e.ReceiverId).ValueGeneratedNever();
             entity.Property(e => e.Comments).IsUnicode(false);
             entity.Property(e => e.CreatedBy)
@@ -346,7 +351,7 @@ public partial class GneProjectContext : DbContext
                 .IsUnicode(false);
             entity.Property(e => e.CreatedOn).HasColumnType("datetime");
             entity.Property(e => e.Description).IsUnicode(false);
-            entity.Property(e => e.IsSupplyChainVpapproved).HasColumnName("IsSupplyChainVPApproved");
+            entity.Property(e => e.FormCode).ValueGeneratedOnAdd();
             entity.Property(e => e.ReceiverDate).HasColumnType("datetime");
             entity.Property(e => e.ReceiverName)
                 .HasMaxLength(50)
@@ -357,11 +362,6 @@ public partial class GneProjectContext : DbContext
             entity.Property(e => e.ReceiverSubOrganization)
                 .HasMaxLength(50)
                 .IsUnicode(false);
-
-            entity.HasOne(d => d.Currency).WithMany(p => p.ReceiverModels)
-                .HasForeignKey(d => d.CurrencyId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_ReceiverModel_Currency");
         });
 
         modelBuilder.Entity<ReceiverRecipient>(entity =>
@@ -430,16 +430,24 @@ public partial class GneProjectContext : DbContext
         {
             entity.ToTable("User");
 
-            entity.Property(e => e.UserName)
+            entity.HasIndex(e => e.UserEmail, "UQ__User__08638DF8B088186B").IsUnique();
+
+            entity.Property(e => e.UserDepartment)
                 .HasMaxLength(50)
                 .IsUnicode(false);
-            entity.Property(e => e.UserPosition)
+            entity.Property(e => e.UserEmail)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.UserName)
                 .HasMaxLength(50)
                 .IsUnicode(false);
             entity.Property(e => e.UserSeniorName)
                 .HasMaxLength(50)
                 .IsUnicode(false);
             entity.Property(e => e.UserSeniorPosition)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.UserTitle)
                 .HasMaxLength(50)
                 .IsUnicode(false);
         });
