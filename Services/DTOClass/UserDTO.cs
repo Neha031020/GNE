@@ -15,5 +15,6 @@ namespace Services.DTOClass
         public string UserTitle { get; set; } = null!;
         [EmailAddress]
         public string UserEmail { get; set; } = null!;
+        // Commit new Items
     }
 }
