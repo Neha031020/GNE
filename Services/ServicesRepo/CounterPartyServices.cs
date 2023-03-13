@@ -26,6 +26,7 @@ namespace Services.ServicesRepo
             var DtoToUser = _mapper.Map<CounterPartyDTO, CounterParty>(counterPartyDTO);
             var DataCounter = await _counterParty.EditOrApproveCounterParty(DtoToUser);
             return DataCounter;
+            //dbhqwadQW
         }
 
         public async Task<List<CounterPartyDTO>> GetListOfParty()
