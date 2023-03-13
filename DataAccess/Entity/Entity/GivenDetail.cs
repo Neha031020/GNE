@@ -1,23 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DataAccess.Entity;
+namespace Api.DataAccess.Entity;
 
-public partial class ReceiverDetail
+public partial class GivenDetail
 {
-    public int Id { get; set; }
+    public short GivenDetailsId { get; set; }
 
-    public int ReceiverId { get; set; }
+    public int GivenId { get; set; }
 
     public bool IsDeleted { get; set; }
 
     public string CreatedBy { get; set; } = null!;
 
-    public string CreatedOn { get; set; } = null!;
+    public DateTime CreatedOn { get; set; }
 
     public int CategoryId { get; set; }
 
     public virtual Category Category { get; set; } = null!;
 
-    public virtual ReceiverModel Receiver { get; set; } = null!;
+    public virtual GiverModel Given { get; set; } = null!;
 }

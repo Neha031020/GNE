@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace DataAccess.IDataAcces
 {
-    public interface IUser
+    public interface IThreshold
     {
-        public Task<List<User>> GetInfo();
-        public Task<User[]> GetUserInfo();
-      
+        public Task<List<Threshold>> GetAllThresholdList();
     }
 }

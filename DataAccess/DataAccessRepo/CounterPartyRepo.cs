@@ -1,16 +1,12 @@
-﻿using DataAccess.Context;
-using DataAccess.Entity;
+﻿using DataAccess.Entity;
+using DataAccess.Context;
+
 using DataAccess.IDataAcces;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccess.DataAccessRepo
 {
-    
+
     public class CounterPartyRepo : ICounterParty
     {
         private readonly GneProjectContext _Context;
@@ -20,15 +16,31 @@ namespace DataAccess.DataAccessRepo
         }
         public async Task<string> EditOrApproveCounterParty(CounterParty counterParty)
         {
-           var exisitingData=await _Context.CounterParties.Where(x=>x.CounterPartyId==counterParty.CounterPartyId).FirstOrDefaultAsync();
-            if (exisitingData==null) 
-            { 
-                return ("Party Not Found");
+            try
+            {
+                var exisitingData = await _Context.CounterParties.Where(x => x.PartyName == counterParty.PartyName).FirstOrDefaultAsync();
+                if (exisitingData != null)
+                {
+                    exisitingData.Status = counterParty.Status;
+
+                    await _Context.SaveChangesAsync();
+                    return ("Update Successfully.....:)");
+                }
+                var NewcounterParty = (new CounterParty
+                {
+                    PartyName = counterParty.PartyName,
+                    Status = counterParty.Status,
+
+                });
+                await _Context.CounterParties.AddAsync(NewcounterParty);
+                await _Context.SaveChangesAsync();
+                return ("Added Succesfully......:)");
             }
-            exisitingData.PartyName = counterParty.PartyName;
-            exisitingData.Status = counterParty.Status;
-            await _Context.SaveChangesAsync();
-            return ("Update Successfully.....:)");
+            catch (Exception)
+            {
+
+                throw;
+            }
 
 
         }

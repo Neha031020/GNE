@@ -36,6 +36,8 @@ builder.Services.AddScoped<ICounterPartyServices, CounterPartyServices>();
 builder.Services.AddScoped<ICounterParty, CounterPartyRepo>();
 builder.Services.AddScoped<IUserServices, UserServices>();
 builder.Services.AddScoped<IUser, UserRepo>();
+builder.Services.AddScoped<IThresholdServices, ThresholdServices>();
+builder.Services.AddScoped<IThreshold, ThresholdRepo>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

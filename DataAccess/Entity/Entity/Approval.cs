@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DataAccess.Entity;
+namespace Api.DataAccess.Entity;
 
-public partial class ApprovalDetail
+public partial class Approval
 {
-    public int ApprovalDetailId { get; set; }
-
     public int ApprovalId { get; set; }
 
-    public string ApprovarName { get; set; } = null!;
+    public string ReqEmail { get; set; } = null!;
 
-    public string ApprovarTitle { get; set; } = null!;
+    public int FormCode { get; set; }
 
     public string? Status { get; set; }
 
@@ -19,11 +17,9 @@ public partial class ApprovalDetail
 
     public DateTime? StatusOn { get; set; }
 
-    public string? Comments { get; set; }
-
     public string CreatedBy { get; set; } = null!;
 
     public DateTime CreatedOn { get; set; }
 
-    public virtual Approval Approval { get; set; } = null!;
+    public virtual ICollection<ApprovalDetail> ApprovalDetails { get; } = new List<ApprovalDetail>();
 }

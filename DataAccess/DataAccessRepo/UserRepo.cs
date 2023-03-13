@@ -18,35 +18,7 @@ namespace DataAccess.DataAccessRepo
             _context = context;
         }
 
-        public async Task<string> AddUsers(User user)
-        {
-            try
-            {
-                var exisitingEmail=await _context.Users.Where(x=>x.UserEmail == user.UserEmail).FirstOrDefaultAsync();
-                if (exisitingEmail == null)
-                {
-                    _context.Users.Add(new User
-                    {
-                       UserName= user.UserName,
-                       UserDepartment=user.UserDepartment,
-                       UserSeniorName=user.UserSeniorName,
-                       UserSeniorPosition=user.UserSeniorPosition,
-                       UserEmail=user.UserEmail,
-                       UserTitle=user.UserTitle
-
-                    });
-                    await _context.SaveChangesAsync();
-                    return ("Added Succesfully......:)");
-                }
-                return ("User Already Exist");
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-
+      
         public async Task<List<User>> GetInfo()
         {
             try

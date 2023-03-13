@@ -22,11 +22,7 @@ namespace Services.ServicesRepo
             _mapper = mapper;
         }
 
-        public async Task<string> AddUser(User user)
-        {
-            var AddData=await _user.AddUsers(user);
-            return AddData;
-        }
+       
 
         public async Task<List<User>> GetInfo()
         {

@@ -12,6 +12,6 @@ namespace Services.ServicesInterface
     {
         public Task<List<User>> GetInfo();
         public Task<UserDTO[]> GetUserInfo();
-        public Task<string> AddUser(User user);
+     
     }
 }

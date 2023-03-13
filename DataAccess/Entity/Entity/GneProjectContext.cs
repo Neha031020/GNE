@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using DataAccess.Entity;
 using Microsoft.EntityFrameworkCore;
 
-namespace DataAccess.Context;
+namespace Api.DataAccess.Entity;
 
 public partial class GneProjectContext : DbContext
 {

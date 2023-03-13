@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DataAccess.Entity;
+namespace Api.DataAccess.Entity;
 
 public partial class CounterParty
 {
@@ -9,11 +9,11 @@ public partial class CounterParty
 
     public string PartyName { get; set; } = null!;
 
-    public string CreatedBy { get; set; } = String.Empty;
+    public string CreatedBy { get; set; } = null!;
 
-    public DateTime CreatedOn { get; set; }= DateTime.Now;
+    public DateTime CreatedOn { get; set; }
 
-    public string? Status { get; set; } = "Pending";
+    public string? Status { get; set; }
 
     public string? StatusBy { get; set; }
 

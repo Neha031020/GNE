@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DataAccess.Entity;
+namespace 
+    DataAccess.Entity;
 
 public partial class ReceiverAttachment
 {
@@ -14,4 +15,8 @@ public partial class ReceiverAttachment
     public string CreatedBy { get; set; } = null!;
 
     public DateTime CreatedOn { get; set; }
+
+    public int ReceiverId { get; set; }
+
+    public virtual ReceiverModel Receiver { get; set; } = null!;
 }

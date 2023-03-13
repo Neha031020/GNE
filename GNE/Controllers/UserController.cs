@@ -26,11 +26,5 @@ namespace Api.Controllers
             var UserLimitedData=await _User.GetUserInfo();
             return Ok(UserLimitedData);
         }
-        [HttpPost]
-        public async Task<IActionResult> AddUserData(User user)
-        {
-            var AddData = await _User.AddUser(user);
-            return Ok(AddData);
-        }
     }
 }

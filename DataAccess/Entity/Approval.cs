@@ -11,17 +11,15 @@ public partial class Approval
 
     public int FormCode { get; set; }
 
-    public string Status { get; set; } = null!;
+    public string? Status { get; set; }
 
-    public string StatusBy { get; set; } = null!;
+    public string? StatusBy { get; set; }
 
-    public DateTime StatusOn { get; set; }
+    public DateTime? StatusOn { get; set; }
 
     public string CreatedBy { get; set; } = null!;
 
     public DateTime CreatedOn { get; set; }
 
     public virtual ICollection<ApprovalDetail> ApprovalDetails { get; } = new List<ApprovalDetail>();
-
-    public virtual GiverModel FormCodeNavigation { get; set; } = null!;
 }

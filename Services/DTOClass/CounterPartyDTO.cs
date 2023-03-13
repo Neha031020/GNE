@@ -8,8 +8,8 @@ namespace Services.DTOClass
 {
     public class CounterPartyDTO
     {
-        public int CounterPartyId { get; set; }
 
         public string PartyName { get; set; } = null!;
+        public string Status { get; set; }
     }
 }

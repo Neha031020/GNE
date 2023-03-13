@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DataAccess.Entity;
+namespace Api.DataAccess.Entity;
 
 public partial class ReceiverDetail
 {

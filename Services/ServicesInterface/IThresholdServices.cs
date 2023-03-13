@@ -5,12 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess.IDataAcces
+namespace Services.ServicesInterface
 {
-    public interface IUser
+    public interface IThresholdServices
     {
-        public Task<List<User>> GetInfo();
-        public Task<User[]> GetUserInfo();
-      
+        public Task<List<Threshold>> GetListOfThreshold();
     }
 }

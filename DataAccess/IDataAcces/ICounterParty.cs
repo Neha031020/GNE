@@ -11,5 +11,6 @@ namespace DataAccess.IDataAcces
     {
         public Task<List<CounterParty>> GetListOfCounter();
         public Task<string> EditOrApproveCounterParty(CounterParty counterParty);
+       
     }
 }

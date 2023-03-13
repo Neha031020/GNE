@@ -13,11 +13,13 @@ namespace Api.Controllers
         private readonly ICurrencServices _currency;
         private readonly ICategoryTypeServices _categoryType;
         private readonly ICounterPartyServices _counterParty;
-        public AdminToolController(ICurrencServices currency, ICategoryTypeServices categoryType, ICounterPartyServices counterParty)
+        private readonly IThresholdServices _threshold;
+        public AdminToolController(ICurrencServices currency, ICategoryTypeServices categoryType, ICounterPartyServices counterParty, IThresholdServices threshold)
         {
             _currency = currency;
             _categoryType = categoryType;
             _counterParty = counterParty;
+            _threshold = threshold;
         }
         [HttpGet]
         public async Task<IActionResult> Currencies()
@@ -39,7 +41,7 @@ namespace Api.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> CategoryType()
+        public async Task<IActionResult> CategoryTypes()
         {
             var ListOfCategory = await _categoryType.GetAllCategoryList();
             return Ok(ListOfCategory);
@@ -71,7 +73,12 @@ namespace Api.Controllers
         }
 
 
-
+        [HttpGet]
+        public async Task<IActionResult> Thresholds()
+        {
+            var ListOfThreshold=await _threshold.GetListOfThreshold();
+            return Ok(ListOfThreshold);
+        }
     }
 
 
